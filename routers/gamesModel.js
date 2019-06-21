@@ -9,11 +9,16 @@ module.exports = {
 }
 
 function add(game) {
-  return null
+  return db('games')
+    .insert(game)
+    .then(ids => {
+      [id] = ids;
+      return id;
+    });
 }
 
 function find() {
-  return null
+  return db('games')
 }
 
 function findById(id) {
